@@ -1,0 +1,17 @@
+1. (7.4)
+
+
+2. (7.13)
+
+
+3. (7.16)
+
+
+4. (7.17)
+
+
+5. When a process forks a child, both parent and child processes are runnable. Assuming there are no other processes in the system and a single CPU system, explain how the Linux 3.4 default scheduler will schedule the parent and the child processes, including which process will run after the execution fork.
+
+
+6. Explain how load balancing is done in the realtime scheduler in Linux 3.4.
+
