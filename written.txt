@@ -25,7 +25,33 @@ SJF:  Average response time = 5
 4	50		0		                    =--------x
 
 2. (7.13)
+Assumption: B and C access different I/O -> Do not block each other
 
+a) FIFO:
+A finishes at time 100
+B finishes at time 200
+C finishes at time 202
+
+Illustration:
+A =-100
+B      -- 8 * 10
+C        -- 8 * 10
+
+b) RR with 1ms
+A finishes at time 140 (43 + 6 * 11 + 31)
+B finishes at time 113
+C finishes at time 117
+
+Illustration:
+A =  -  ------- -  - ------ -  - ----- - - - ---- - - - ---- - - - ---- - - - ---- - - - ---- - - - ---- - - - ------------------------------x
+B  -  -        -  -        - -        - -        - -        - -        - -        - -        - -        - -       x
+C   -  -         -  -         - -         - -        - -        - -        - -        - -        - -        - -       x
+
+Explanation: The same queuing strategy is assumed the same as Q1
+
+c) RR with 100ms
+A finishes at time 100
+B finishes at time
 
 3. (7.16)
 
