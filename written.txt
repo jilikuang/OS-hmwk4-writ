@@ -1,5 +1,28 @@
 1. (7.4)
+FIFO: Average response time = 66
+	Completion Time	Response Time
+0	85		0		=---------------x
+1	105		75		  |              -----x
+2	135		100		   |                   ------x
+3	90		70                              |             ---x
+4	135		85                               |                ---------x
 
+RR:   Average response time = 12
+	Completion Time Response Time
+0	220		0		=-  --    --    --      --     --  --  --  x
+1	70		0		  =-    --    -x
+2	120		15		   |  --    --    --      x
+3	65		20		                |   --     -x
+4	130		25		                 |    --     --  --  --  -x
+Explanation: For the RR case, my result is assumably computed by the order of geting into the ready queue. For example, when task 1 starts to run, task 0 is inserted in the ready queue. Therefore, when task 2 arrives, it will be inserted after task 0. Furthermore, when requeue and new task arrive at the same time, new task is assumed to be added first and then requeue.
+
+SJF:  Average response time = 5
+	Completion Time Response Time
+0	220		0		=-             -              -------------x
+1	30		0		  =----x
+2	60		25		   |    ------x
+3	20		0		                =--x
+4	50		0		                    =--------x
 
 2. (7.13)
 
