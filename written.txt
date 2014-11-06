@@ -80,7 +80,11 @@ B =-        --        ~
 C   --        --      ~
 
 3. (7.16)
+a)
+No. If the user with higher level can unconditionally preempt those with lower level, there could be probability that all high-level users occupy the system during the entire period such that other users will starve. In that case, not all user will get some progress.
 
+b)
+No. The mechanism of MFQ will put longer process into lower-priority queues. Even if a user initially with level-1 priority, if it continuously executes, it will eventually be pushed to level-2 or even level-3 queue. In that case, the indicated preferences are not perserved.
 
 4. (7.17)
 
@@ -89,4 +93,3 @@ C   --        --      ~
 
 
 6. Explain how load balancing is done in the realtime scheduler in Linux 3.4.
-
