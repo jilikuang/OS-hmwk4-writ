@@ -51,7 +51,33 @@ Explanation: The same queuing strategy is assumed the same as Q1
 
 c) RR with 100ms
 A finishes at time 100
-B finishes at time
+B finishes at time 200
+C finishes at time 202
+
+Illustration:
+A =-100
+B      -- 8 * 10
+C        -- 8 * 10
+
+d) MF with 4 lv and 1 ms (1, 2, 4, 8 for each priority level)
+A finishes at time 140 (11 + 12 * 9 + 21)
+B finishes at time 109 (19 + 9 * 10)
+C finishes at time 111 (21 + 9 * 10)
+
+Illustration:
+A 1  2-  4---8-------    8--------
+B  1   2             2-           2-
+C   1   2              2-           2-
+
+e) SJF
+A finishes at time 144 (100 + 4 + 40)
+B finishes at time 100
+C finishes at time 102
+
+Illustration:
+A     ------    ------~
+B =-        --        ~
+C   --        --      ~
 
 3. (7.16)
 
