@@ -25,7 +25,7 @@ SJF:  Average response time = 5
 4	50		0		                    =--------x
 
 2. (7.13)
-Assumption: B and C access different I/O -> Do not block each other
+Assumption: B and C access different I/O -> Do not block each other.
 
 a) FIFO:
 A finishes at time 100
@@ -47,7 +47,7 @@ A =  -  ------- -  - ------ -  - ----- - - - ---- - - - ---- - - - ---- - - - --
 B  -  -        -  -        - -        - -        - -        - -        - -        - -        - -        - -       x
 C   -  -         -  -         - -         - -        - -        - -        - -        - -        - -        - -       x
 
-Explanation: The same queuing strategy is assumed the same as Q1
+Explanation: The same queuing strategy is assumed the same as Q1.
 
 c) RR with 100ms
 A finishes at time 100
@@ -87,9 +87,28 @@ b)
 No. The mechanism of MFQ will put longer process into lower-priority queues. Even if a user initially with level-1 priority, if it continuously executes, it will eventually be pushed to level-2 or even level-3 queue. In that case, the indicated preferences are not perserved.
 
 4. (7.17)
+a)
+FIFO. Since b is larger than a, the priority of a running task will always have higher priority than the waiting tasks.
 
+b)
+RR. When T1 starts running, T1 will get priority b (<0) at the time 1. If T2 get into the queue after T1, it will preempt T1 with P0. At the time T1 is preempted, it will be reset to P0 and then preempt T2 again. This loop will continue.
+
+c)
+If T1 slightly arrives early and get running, it will get priority < 0 later and T2 will get priority > 0 and then preempt T1. Since T1 will retain the priority, it will increase its priority with a and T2 will decrease priority with b. When their priorities across they will exchange execution turn, thus getting into RR mechanism.
+
+d)
+I would let a > b > 0, and reset P0 whenever a task enters or is preempted, such that a RR scheduling can be achieved.
 
 5. When a process forks a child, both parent and child processes are runnable. Assuming there are no other processes in the system and a single CPU system, explain how the Linux 3.4 default scheduler will schedule the parent and the child processes, including which process will run after the execution fork.
 
+The child process will be executed before the parent only when sysctl_sched_child_runs_first is set and the virtual runtime of the child is larger than the parent. Otherwise, the parent will always be executed before the child.
+
+Reference:
+http://lxr.free-electrons.com/source/kernel/sched/fair.c?v=3.4#L5178
 
 6. Explain how load balancing is done in the realtime scheduler in Linux 3.4.
+
+There are two ways for the RT scheduler to do load balancing. In pre_schudule, the RT scheduler will try to pull the task on other RQ whose priority is higher than the next task to its RQ; In post_schedule, the RT scheduler will try to push its next pushable task to other RQ if it can find that the pushable task has higher priority than its running task.
+
+Reference:
+http://lxr.free-electrons.com/source/kernel/sched/rt.c?v=3.4#L1602
