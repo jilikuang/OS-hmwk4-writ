@@ -16,13 +16,13 @@ RR:   Average response time = 12
 4	130		25		                 |    --     --  --  --  -x
 Explanation: For the RR case, my result is assumably computed by the order of geting into the ready queue. For example, when task 1 starts to run, task 0 is inserted in the ready queue. Therefore, when task 2 arrives, it will be inserted after task 0. Furthermore, when requeue and new task arrive at the same time, new task is assumed to be added first and then requeue.
 
-SJF:  Average response time = 5
+SJF:  Average response time = 8
 	Completion Time Response Time
 0	220		0		=-             -              -------------x
 1	30		0		  =----x
 2	60		25		   |    ------x
 3	20		0		                =--x
-4	50		0		                    =--------x
+4	65		15		                 |  ---------x
 
 2. (7.13)
 Assumption: B and C access different I/O -> Do not block each other.
